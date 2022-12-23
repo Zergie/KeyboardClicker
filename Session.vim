@@ -14,14 +14,23 @@ else
   set shortmess=aoO
 endif
 badd +1 Program.cs
-badd +38 Form1.Designer.cs
-badd +1 NativeMethods.cs
-badd +40 c:/GIT/KeyboardClicker/Form1.cs
+badd +40 Form1.Designer.cs
+badd +47 NativeMethods.cs
+badd +43 Form1.cs
 badd +1 /$metadata$/Project/KeyboardClicker/Assembly/System/Drawing/Common/Symbol/System/Drawing/Graphics.cs
 badd +1 /$metadata$/Project/KeyboardClicker/Assembly/System/Windows/Forms/Symbol/System/Windows/Forms/Control.cs
+badd +1 Shapes/IShape.cs
+badd +2 Rectangle.cs
+badd +1 Shapes/Shape.cs
+badd +1 HintGenerators/ColemakDhHintGenerator.cs
+badd +23 HintGenerators/HintGenerator.cs
+badd +1 Shapes/RectangleShape.cs
+badd +5 ShapeGenerators/Shape.cs
+badd +24 ShapeGenerators/ShapeGenerator.cs
+badd +74 .editorconfig
 argglobal
 %argdel
-edit c:/GIT/KeyboardClicker/Form1.cs
+edit Form1.cs
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -38,32 +47,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 117 + 118) / 236)
-exe 'vert 2resize ' . ((&columns * 118 + 118) / 236)
+exe 'vert 1resize ' . ((&columns * 114 + 118) / 236)
+exe 'vert 2resize ' . ((&columns * 121 + 118) / 236)
 argglobal
-balt /$metadata$/Project/KeyboardClicker/Assembly/System/Drawing/Common/Symbol/System/Drawing/Graphics.cs
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 33 - ((32 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 33
-normal! 051|
-wincmd w
-argglobal
-if bufexists(fnamemodify("Form1.Designer.cs", ":p")) | buffer Form1.Designer.cs | else | edit Form1.Designer.cs | endif
-if &buftype ==# 'terminal'
-  silent file Form1.Designer.cs
-endif
 balt NativeMethods.cs
 setlocal fdm=manual
 setlocal fde=0
@@ -75,16 +61,39 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 38 - ((37 * winheight(0) + 28) / 56)
+let s:l = 43 - ((34 * winheight(0) + 30) / 61)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 38
-normal! 019|
+keepjumps 43
+normal! 013|
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 117 + 118) / 236)
-exe 'vert 2resize ' . ((&columns * 118 + 118) / 236)
+argglobal
+if bufexists(fnamemodify("ShapeGenerators/ShapeGenerator.cs", ":p")) | buffer ShapeGenerators/ShapeGenerator.cs | else | edit ShapeGenerators/ShapeGenerator.cs | endif
+if &buftype ==# 'terminal'
+  silent file ShapeGenerators/ShapeGenerator.cs
+endif
+balt /$metadata$/Project/KeyboardClicker/Assembly/System/Drawing/Common/Symbol/System/Drawing/Graphics.cs
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 80 - ((25 * winheight(0) + 30) / 61)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 80
+normal! 0
+lcd C:/GIT/KeyboardClicker
+wincmd w
+exe 'vert 1resize ' . ((&columns * 114 + 118) / 236)
+exe 'vert 2resize ' . ((&columns * 121 + 118) / 236)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

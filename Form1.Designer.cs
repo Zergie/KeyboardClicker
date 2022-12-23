@@ -31,11 +31,17 @@ partial class MainForm
         this.components = new System.ComponentModel.Container();
         this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         this.ClientSize = new System.Drawing.Size(800, 450);
-        this.Text = "Form1";
+
+        this.FormBorderStyle = FormBorderStyle.None;
+        this.BackColor = Color.Black;
+        this.Bounds = Screen.PrimaryScreen.Bounds;
+        this.TopMost = true;
+        //this.Opacity = 0.3;
+        this.TransparencyKey = this.BackColor;
 
         this.Shown += this.Form_Shown;
-        this.FormClosed += this.Form_Closed;
         this.KeyDown += this.Form_KeyDown;
+        this.Paint += this.Form_Paint;
     }
 
     #endregion
