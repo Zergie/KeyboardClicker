@@ -68,9 +68,9 @@ public class ShapeGenerator
         var height = Math.Max(20, screen.Height / rows);
         var index = 1;
 
-        for (var row = 0; row < rows; row++)
+        for (var col = 0; col < cols; col++)
         {
-            for (var col = 0; col < cols; col++)
+            for (var row = 0; row < rows; row++)
             {
                 var rect = new Rectangle(
                         screen.Left + col * width,
@@ -81,7 +81,7 @@ public class ShapeGenerator
 
                 var shape = new Shape
                 {
-                    Text = HintGenerator.GetHint(index),
+                    Text = $"{HintGenerator.GetHint(col)}{HintGenerator.GetHint(row)}",
                     Point = new Point(
                             rect.Left + rect.Width / 2,
                             rect.Top + rect.Height / 2
