@@ -112,6 +112,8 @@ public partial class MainForm : Form
                     Beep();
                 }
                 break;
+            case >= Keys.D0 and <= Keys.D9:
+            case >= Keys.NumPad0 and <= Keys.NumPad9:
             case >= Keys.A and <= Keys.Z:
                 InputText += $"{(char)e.KeyCode}";
 

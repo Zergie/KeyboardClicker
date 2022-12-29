@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace KeyboardClicker.HintGenerators;
 
 public class HintGenerator
@@ -5,6 +7,7 @@ public class HintGenerator
     public HintGenerator()
     {
         Alphabet = "arstneioWFPLUYcdhBGVJMK"
+        //Alphabet = "0123456789ABCDEF"
             .Select(x => x.ToString().ToUpperInvariant())
             .ToList();
     }
@@ -13,17 +16,17 @@ public class HintGenerator
 
     public string GetHint(int index)
     {
-        var result = "";
+        var result = new StringBuilder();
         var number = index;
 
-        while (number > 0)
+        do
         {
             var remainder = number % Alphabet.Count;
-            result += Alphabet[remainder];
+            _ = result.Insert(0, Alphabet[remainder]);
             number /= Alphabet.Count;
-        }
+        } while (number > 0);
 
-        return result;
+        return result.ToString();
     }
 }
 

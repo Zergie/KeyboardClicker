@@ -16,17 +16,17 @@ endif
 badd +1 Program.cs
 badd +40 Form1.Designer.cs
 badd +47 NativeMethods.cs
-badd +43 Form1.cs
+badd +116 Form1.cs
 badd +1 /$metadata$/Project/KeyboardClicker/Assembly/System/Drawing/Common/Symbol/System/Drawing/Graphics.cs
 badd +1 /$metadata$/Project/KeyboardClicker/Assembly/System/Windows/Forms/Symbol/System/Windows/Forms/Control.cs
 badd +1 Shapes/IShape.cs
 badd +2 Rectangle.cs
 badd +1 Shapes/Shape.cs
 badd +1 HintGenerators/ColemakDhHintGenerator.cs
-badd +23 HintGenerators/HintGenerator.cs
+badd +10 HintGenerators/HintGenerator.cs
 badd +1 Shapes/RectangleShape.cs
 badd +5 ShapeGenerators/Shape.cs
-badd +24 ShapeGenerators/ShapeGenerator.cs
+badd +84 ShapeGenerators/ShapeGenerator.cs
 badd +74 .editorconfig
 argglobal
 %argdel
@@ -47,10 +47,10 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 114 + 118) / 236)
-exe 'vert 2resize ' . ((&columns * 121 + 118) / 236)
+exe 'vert 1resize ' . ((&columns * 101 + 105) / 210)
+exe 'vert 2resize ' . ((&columns * 108 + 105) / 210)
 argglobal
-balt NativeMethods.cs
+balt ShapeGenerators/ShapeGenerator.cs
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -61,19 +61,19 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 43 - ((34 * winheight(0) + 30) / 61)
+let s:l = 116 - ((40 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 43
-normal! 013|
+keepjumps 116
+normal! 052|
 wincmd w
 argglobal
-if bufexists(fnamemodify("ShapeGenerators/ShapeGenerator.cs", ":p")) | buffer ShapeGenerators/ShapeGenerator.cs | else | edit ShapeGenerators/ShapeGenerator.cs | endif
+if bufexists(fnamemodify("HintGenerators/HintGenerator.cs", ":p")) | buffer HintGenerators/HintGenerator.cs | else | edit HintGenerators/HintGenerator.cs | endif
 if &buftype ==# 'terminal'
-  silent file ShapeGenerators/ShapeGenerator.cs
+  silent file HintGenerators/HintGenerator.cs
 endif
-balt /$metadata$/Project/KeyboardClicker/Assembly/System/Drawing/Common/Symbol/System/Drawing/Graphics.cs
+balt ShapeGenerators/ShapeGenerator.cs
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -84,16 +84,17 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 80 - ((25 * winheight(0) + 30) / 61)
+let s:l = 10 - ((9 * winheight(0) + 28) / 57)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 80
-normal! 0
+keepjumps 10
+normal! 09|
 lcd C:/GIT/KeyboardClicker
 wincmd w
-exe 'vert 1resize ' . ((&columns * 114 + 118) / 236)
-exe 'vert 2resize ' . ((&columns * 121 + 118) / 236)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 101 + 105) / 210)
+exe 'vert 2resize ' . ((&columns * 108 + 105) / 210)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
